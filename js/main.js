@@ -6,6 +6,15 @@ const loadData = () => {
 };
 
 const showData = (data) => {
+  //   sort by date
+  document
+    .getElementById("sort-by-date")
+    .addEventListener("click", function () {
+      data.sort(function (a, b) {
+        return new Date(b.published_in) - new Date(a.published_in);
+      });
+    });
+
   const cardContainer = document.getElementById("card-container");
   cardContainer.textContent = "";
   //   // show 6 data
@@ -22,7 +31,7 @@ const showData = (data) => {
   //     .addEventListener("click", function () {});
 
   data.map((singleData) => {
-    console.log(singleData);
+    // console.log(singleData);
     const { image, features, name, published_in } = singleData;
     cardContainer.innerHTML += `<div class="col">
     <div class="card h-100">
