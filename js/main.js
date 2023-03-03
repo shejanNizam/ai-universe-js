@@ -8,7 +8,7 @@ const loadData = () => {
 const showData = (data) => {
   const cardContainer = document.getElementById("card-container");
   cardContainer.textContent = "";
-  // show 6 data
+  //   // show 6 data
   //   const showAll = document.getElementById("show-all");
   //   if (data.length > 6) {
   //     data = data.slice(0, 6);
@@ -22,7 +22,7 @@ const showData = (data) => {
   //     .addEventListener("click", function () {});
 
   data.map((singleData) => {
-    // console.log(singleData);
+    console.log(singleData);
     const { image, features, name, published_in } = singleData;
     cardContainer.innerHTML += `<div class="col">
     <div class="card h-100">
@@ -60,7 +60,7 @@ const loadDataDetails = async (id) => {
 };
 
 const displayDataDetails = (data) => {
-  console.log(data);
+  //   console.log(data);
 
   const phoneDetails = document.getElementById("data-details");
   const {
@@ -70,41 +70,62 @@ const displayDataDetails = (data) => {
     integrations,
     image_link,
     input_output_examples,
+    accuracy,
   } = data;
+  //   console.log(accuracy);
   phoneDetails.innerHTML = `
   <div class="row gap-2 ">
                      <!-- left side  -->
-                <div class="col rounded-3 p-3" style=" border: 1px solid blueviolet;" >
+                <div class="col rounded-3 p-3 bg-info" style=" border: 1px solid blueviolet;" >
                     <h5>${description}  </h5>
                     <div class="row my-3 gap-2">
-                      <div class="col text-primary bg-warning rounded-3"> ${pricing[0].price} <span> ${pricing[0].plan} </span> </div>
-                      <div class="col text-warning bg-secondary rounded-3">${pricing[1].price} <span> ${pricing[1].plan} </span> </div>
-                      <div class="col text-danger bg-info rounded-3 ">${pricing[2].price} <span> ${pricing[2].plan} </span> </div>
+                      <div class="col text-primary text-center fw-bold bg-white rounded-3"> ${
+                        pricing[0].price
+                      } <span> ${pricing[0].plan} </span> </div>
+                      <div class="col text-warning text-center fw-bold bg-white rounded-3">${
+                        pricing[1].price
+                      } <span> ${pricing[1].plan} </span> </div>
+                      <div class="col text-danger text-center fw-bold bg-white rounded-3 ">${
+                        pricing[2].price
+                      } <span> ${pricing[2].plan} </span> </div>
                     </div>
                     <div class="d-flex justify-content-between">
                       <div class="feature">
                         <h6>Features</h3>
                         <ul>
-                          <li>${features.feature_name}</li>
-                          <li>${features.feature_name}</li>
-                          <li>${features.feature_name}</li>
+                          <li>${features["1"].feature_name}</li>
+                          <li>${features["2"].feature_name}</li>
+                          <li>${features["3"].feature_name}</li>
                         </ul>
                       </div>
                       <div class="integration">
                         <h6>Integrations</h3>                               
                         <ul>
-                          <li> ${integrations[0]} </li>
-                          <li> ${integrations[1]} </li>
-                          <li> ${integrations[2]} </li>
+                          <li> ${
+                            integrations[0] ? integrations[0] : "No Data Found"
+                          } </li>
+                          <li> ${
+                            integrations[1] ? integrations[1] : "No Data Found"
+                          } </li>
+                          <li> ${
+                            integrations[2] ? integrations[2] : "No Data Found"
+                          } </li>
                         </ul>
                       </div>
                     </div>
                   </div>
                   <!-- right side -->
                   <div class="col rounded-3 text-center " style=" border: 1px solid blueviolet;" >
-                      <img class="img-fluid" src=${image_link[0]} alt="">
+                  <span class="badge bg-danger text-light"> ${
+                    accuracy.score * 100 != 0 ? accuracy.score * 100 : "No "
+                  }% accuracy </span>
+                      <img class="img-fluid" src=${image_link[0]}  alt="">
                       <h4 class ="mt-3"> ${input_output_examples[0].input} </h4>
-                      <p> ${input_output_examples[0].output} </p>
+                      <p> ${
+                        input_output_examples[0].output
+                          ? input_output_examples[0].output
+                          : "No! Not Yet! Take a break!!!"
+                      } </p>
                   </div>
                 </div>
 
