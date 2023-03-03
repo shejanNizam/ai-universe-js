@@ -21,10 +21,71 @@
     <main>
       <section class="container">
         <div id="card-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
-        <div class="text-center my-4">
-          <button type="button" class="btn btn-danger">See All -></button>
+        <!-- show all button  -->
+        <div id="show-all" class="text-center d-none">
+          <div id="btn-show-all" class="btn btn-danger my-3">Show All</div>
         </div>
       </section>
+
+      <!-- modal container -->
+      <section>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1">
+          <div class="modal-dialog  modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div
+                id="data-details"
+                class="modal-body d-flex justify-content-between align-items-center"
+              >
+                <div class="row gap-2 ">
+                    <!-- left side  -->
+                <div class="col rounded-3" style="width: 500px; height: 400px; border: 1px solid blueviolet;" >
+                    <h2>shejan</h2>
+                    <div class="row">
+                      <div class="col text-primary ">10  </div>
+                      <div class="col text-warning ">20</div>
+                      <div class="col text-danger ">30</div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <div class="feature">
+                        <h6>Features</h3>
+                        <ul>
+                          <li>x</li>
+                          <li>y</li>
+                          <li>z</li>
+                        </ul>
+                      </div>
+                      <div class="integration">
+                        <h6>Integrations</h3>
+                        <ul>
+                          <li>x</li>
+                          <li>y</li>
+                          <li>z</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- right side -->
+                  <div class="col rounded-3 text-center " style="width: 500px; height: 400px; border: 1px solid blueviolet;" >
+                      <img class="img-fluid" src="" alt="">
+                      <h2>shejan</h2>
+                      <p>eghiowiegv;hn</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- js file link  -->
