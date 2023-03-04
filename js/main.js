@@ -60,7 +60,6 @@ const showData = (data, dataLimit) => {
 };
 
 const processData = (dataLimit) => {
-  toggleSpinner(true);
   loadData(dataLimit);
 };
 
@@ -83,7 +82,6 @@ const toggleSpinner = (isLoading) => {
 // });
 
 const loadDataDetails = async (id) => {
-  toggleSpinner(true);
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
   const res = await fetch(url);
   const data = await res.json();
@@ -107,7 +105,7 @@ const displayDataDetails = (data) => {
   phoneDetails.innerHTML = `
   <div class="row gap-2 ">
                      <!-- left side  -->
-                <div class="col rounded-3 p-3 bg-info" style=" border: 1px solid blueviolet;" >
+                <div class="col rounded-3 p-4 bg-info" style=" border: 1px solid blueviolet;" >
                     <h5> ${description} </h5>
                     <div class="row my-3 gap-2">
                       <div class="col text-primary text-center fw-bold bg-white rounded-3"> ${
