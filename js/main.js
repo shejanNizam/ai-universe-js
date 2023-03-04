@@ -108,7 +108,7 @@ const displayDataDetails = (data) => {
   <div class="row gap-2 ">
                      <!-- left side  -->
                 <div class="col rounded-3 p-3 bg-info" style=" border: 1px solid blueviolet;" >
-                    <h5>${description}  </h5>
+                    <h5> ${description} </h5>
                     <div class="row my-3 gap-2">
                       <div class="col text-primary text-center fw-bold bg-white rounded-3"> ${
                         pricing[0].price ? pricing[0].price : "Free of Cost"
