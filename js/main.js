@@ -1,11 +1,12 @@
-const loadData = () => {
+const loadData = (dataLimit) => {
+  toggleSpinner(true);
   url = `https://openapi.programming-hero.com/api/ai/tools`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => showData(data.data.tools));
+    .then((data) => showData(data.data.tools, dataLimit));
 };
 
-const showData = (data) => {
+const showData = (data, dataLimit) => {
   //   sort by date
   document
     .getElementById("sort-by-date")
@@ -16,21 +17,17 @@ const showData = (data) => {
     });
 
   const cardContainer = document.getElementById("card-container");
-  cardContainer.textContent = "";
-  //   // show 6 data
-  //   const showAll = document.getElementById("show-all");
-  //   if (data.length > 6) {
-  //     data = data.slice(0, 6);
-  //     showAll.classList.remove("d-none");
-  //   } else {
-  //     showAll.classList.add("d-none");
-  //   }
+  // show 6 data
+  const showAll = document.getElementById("show-all");
 
-  //   document
-  //     .getElementById("btn-show-all")
-  //     .addEventListener("click", function () {});
+  if (data.length > 6) {
+    data = data.slice(0, 6);
+    showAll.classList.remove("d-none");
+  } else {
+    showAll.classList.add("d-none");
+  }
 
-  data.map((singleData) => {
+  data.forEach((singleData) => {
     // console.log(singleData);
     const { image, features, name, published_in } = singleData;
     cardContainer.innerHTML += `<div class="col">
@@ -59,9 +56,39 @@ const showData = (data) => {
     </div>
   </div>`;
   });
+  toggleSpinner(false);
 };
 
+const processData = (dataLimit) => {
+  toggleSpinner(true);
+  loadData(dataLimit);
+};
+
+document.getElementById("btn-show-all").addEventListener("click", function () {
+  processData();
+});
+
+// const processSearch = (dataLimit) => {
+//   //   toggleSpinner(true);
+//   loadPhones(dataLimit);
+// };
+
+// spinner
+const toggleSpinner = (isLoading) => {
+  const loderSection = document.getElementById("loader");
+  if (isLoading) {
+    loderSection.classList.remove("d-none");
+  } else {
+    loderSection.classList.add("d-none");
+  }
+};
+
+// document.getElementById("btn-show-all").addEventListener("click", function () {
+//   processSearch();
+// });
+
 const loadDataDetails = async (id) => {
+  toggleSpinner(true);
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
   const res = await fetch(url);
   const data = await res.json();
@@ -89,13 +116,13 @@ const displayDataDetails = (data) => {
                     <h5>${description}  </h5>
                     <div class="row my-3 gap-2">
                       <div class="col text-primary text-center fw-bold bg-white rounded-3"> ${
-                        pricing[0].price
+                        pricing[0].price ? pricing[0].price : "Free of Cost"
                       } <span> ${pricing[0].plan} </span> </div>
                       <div class="col text-warning text-center fw-bold bg-white rounded-3">${
-                        pricing[1].price
+                        pricing[1].price ? pricing[1].price : "Free of Cost"
                       } <span> ${pricing[1].plan} </span> </div>
                       <div class="col text-danger text-center fw-bold bg-white rounded-3 ">${
-                        pricing[2].price
+                        pricing[2].price ? pricing[2].price : "Free of Cost"
                       } <span> ${pricing[2].plan} </span> </div>
                     </div>
                     <div class="d-flex justify-content-between">
