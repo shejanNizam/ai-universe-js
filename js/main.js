@@ -103,7 +103,7 @@ const displayDataDetails = (data) => {
   } = data;
   //   console.log(accuracy);
   phoneDetails.innerHTML = `
-  <div class="row gap-2 ">
+  <div class="row gap-2">
                      <!-- left side  -->
                 <div class="col rounded-3 p-4 bg-info" style=" border: 1px solid blueviolet;" >
                     <h5> ${description} </h5>
