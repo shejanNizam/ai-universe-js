@@ -68,11 +68,6 @@ document.getElementById("btn-show-all").addEventListener("click", function () {
   processData();
 });
 
-// const processSearch = (dataLimit) => {
-//   //   toggleSpinner(true);
-//   loadPhones(dataLimit);
-// };
-
 // spinner item
 const toggleSpinner = (isLoading) => {
   const loderSection = document.getElementById("loader");
