@@ -7,7 +7,7 @@ const loadData = (dataLimit) => {
 };
 
 const showData = (data, dataLimit) => {
-  //   sort by date
+  //  sort by date
   document
     .getElementById("sort-by-date")
     .addEventListener("click", function () {
@@ -73,7 +73,7 @@ document.getElementById("btn-show-all").addEventListener("click", function () {
 //   loadPhones(dataLimit);
 // };
 
-// spinner
+// spinner item
 const toggleSpinner = (isLoading) => {
   const loderSection = document.getElementById("loader");
   if (isLoading) {
